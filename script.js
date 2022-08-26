@@ -28,15 +28,19 @@ function game() {
     let playerSelection = 0;
     let computerSelection = 0;
 
-    while (playerSelection < 1 && playerSelection > 3) {
-        playerSelection = prompt("What's your choice?", "1 = Rock, 2 = Scissors, 3 = Paper");
-    }
-    playerSelection = SELECTIONS[playerSelection - 1];
-    
-    computerSelection = getComputerChoice();
-
     for (let i = 0; i < 5; i++) {
+        playerSelection = 0;
+
+        while (playerSelection < 1 || playerSelection > 3) {
+            playerSelection = prompt("What's your choice?", "1 = Rock, 2 = Scissors, 3 = Paper");
+        }
+        playerSelection = SELECTIONS[playerSelection - 1];
+        
+        computerSelection = getComputerChoice();
+
         result = playRound(playerSelection, computerSelection);
+
+        alert(result);
 
         if (result === messageWin) {
             counter[0]++;
@@ -51,4 +55,4 @@ function game() {
 }
 
 
-console.log(playRound(playerSelection, computerSelection));
+game();
