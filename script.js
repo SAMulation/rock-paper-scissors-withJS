@@ -3,6 +3,11 @@ const SELECTIONS = ["rock", "paper", "scissors"]
 const messageWin = "You won this round!!!";
 const messageLose = "You lost this round...";
 const messageTie = "It's a tie!"
+const roundResults = document.getElementById('round');
+const gameResults = document.getElementById('game');
+
+roundResults.classList.toggle('inactive');
+gameResults.classList.toggle('inactive');
 
 // buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll('button');
