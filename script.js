@@ -5,6 +5,7 @@ const messageLose = "You lost this round...";
 const messageTie = "It's a tie!"
 let roundResults = document.getElementById('round');
 let gameResults = document.getElementById('game');
+let counter = [0,0,0];
 
 // Hide the #round and #game results
 roundResults.classList.toggle('inactive');
@@ -35,6 +36,9 @@ function playRound(playerSelection, computerSelection) {
     let computerResult = "Computer picked: " + computerSelection[0].toUpperCase() + computerSelection.substring(1) + ".";
     let roundResult = "";
 
+    //roundResults.classList.toggle('inactive');
+
+    
     console.log("Computer choice: " + computerSelection[0].toUpperCase() + computerSelection.substring(1))
 
     if (playerSelection === computerSelection) {
@@ -50,44 +54,46 @@ function playRound(playerSelection, computerSelection) {
     playerElement.textContent = playerResult;
     computerElement.textContent = computerResult;
     roundResultElement.textContent = message;
-    //roundResults.textContent = result;
-    roundResults.classList.toggle('inactive');
 
+    // Show results
+    roundResults.classList.remove('inactive');
+
+    if (message === messageWin) {
+        counter[0]++;
+        document.querySelector("#won span").textContent = counter[0];
+    } else if (message === messageLose) {
+        counter[1]++;
+        document.querySelector("#lost span").textContent = counter[1];
+    } else {
+        counter[2]++;
+        document.querySelector("#tied span").textContent = counter[2];
+    }
+    console.log(counter);
     console.log(message);
     return message;
 }
 
-function game() {
-    let counter = [0,0,0];
-    let result = "";
-    let playerSelection = 0;
-    let computerSelection = 0;
+//function game() {
 
     //for (let i = 0; i < 5; i++) {
-    playerSelection = 0;
+    //playerSelection = 0;
 
-    while (playerSelection < 1 || playerSelection > 3) {
-        playerSelection = prompt("What's your choice?", "1 = Rock, 2 = Scissors, 3 = Paper");
-    }
-    playerSelection = SELECTIONS[playerSelection - 1];
+    // while (playerSelection < 1 || playerSelection > 3) {
+    //     playerSelection = prompt("What's your choice?", "1 = Rock, 2 = Scissors, 3 = Paper");
+    // }
+    // playerSelection = SELECTIONS[playerSelection - 1];
     
-    computerSelection = getComputerChoice();
+    // computerSelection = getComputerChoice();
 
-    result = playRound(playerSelection, computerSelection);
+    // result = playRound(playerSelection, computerSelection);
 
-    alert(result);
+    //alert(result);
 
-    if (result === messageWin) {
-        counter[0]++;
-    } else if (result === messageLose) {
-        counter[1]++;
-    } else {
-        counter[2]++;
-    }
+
     //}
 
-    alert("You won: " + counter[0] + ", You lost: " + counter[1] + ", You tied: " + counter[2] + ". Refresh to play again!")
-}
+    //alert("You won: " + counter[0] + ", You lost: " + counter[1] + ", You tied: " + counter[2] + ". Refresh to play again!")
+//}
 
 
 //game();
