@@ -3,8 +3,8 @@ const SELECTIONS = ["rock", "paper", "scissors"]
 const messageWin = "You won this round!!!";
 const messageLose = "You lost this round...";
 const messageTie = "It's a tie!"
-const roundResults = document.getElementById('round');
-const gameResults = document.getElementById('game');
+let roundResults = document.getElementById('round');
+let gameResults = document.getElementById('game');
 
 // Hide the #round and #game results
 roundResults.classList.toggle('inactive');
@@ -31,19 +31,26 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let message = messageLose;
-    let result = "You picked: " + playerSelection + "\n" + 
-                 "Computer picked: " + computerSelection + "\n";
+    let playerResult = "You picked: " + playerSelection[0].toUpperCase() + playerSelection.substring(1) + ".";
+    let computerResult = "Computer picked: " + computerSelection[0].toUpperCase() + computerSelection.substring(1) + ".";
+    let roundResult = "";
 
-    console.log("Computer choice: " + computerSelection)
+    console.log("Computer choice: " + computerSelection[0].toUpperCase() + computerSelection.substring(1))
 
     if (playerSelection === computerSelection) {
         message = messageTie;
     } else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "rock") {
         message = messageWin;
     }
-    
-    result += message + "\n";
-    roundResults.textContent = result;
+
+    const playerElement = document.getElementById('roundPlayer');
+    const computerElement = document.getElementById('roundComputer');
+    const roundResultElement = document.getElementById('roundResult');
+
+    playerElement.textContent = playerResult;
+    computerElement.textContent = computerResult;
+    roundResultElement.textContent = message;
+    //roundResults.textContent = result;
     roundResults.classList.toggle('inactive');
 
     console.log(message);

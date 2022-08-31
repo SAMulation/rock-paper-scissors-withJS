@@ -27,6 +27,10 @@ button {
     text-align: center;
 }
 
+#counter {
+    margin-top: 20px;
+}
+
 .inactive {
     display: none;
 }
