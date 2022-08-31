@@ -6,6 +6,7 @@ const messageTie = "It's a tie!"
 const roundResults = document.getElementById('round');
 const gameResults = document.getElementById('game');
 
+// Hide the #round and #game results
 roundResults.classList.toggle('inactive');
 gameResults.classList.toggle('inactive');
 
@@ -30,6 +31,9 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let message = messageLose;
+    let result = "You picked: " + playerSelection + "\n" + 
+                 "Computer picked: " + computerSelection + "\n";
+
     console.log("Computer choice: " + computerSelection)
 
     if (playerSelection === computerSelection) {
@@ -37,6 +41,10 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "rock") {
         message = messageWin;
     }
+    
+    result += message + "\n";
+    roundResults.textContent = result;
+    roundResults.classList.toggle('inactive');
 
     console.log(message);
     return message;
