@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Controls</h1>
-    <div class="container">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
-    </div>
+    <h1>Rock, Paper, Scissors</h1>
+    <p class="pHead">by, Sam Sarsten</p>
+    <section id="actionButtons">
+        <button data-action="rock">Rock</button>
+        <button data-action="paper">Paper</button>
+        <button data-action="scissors">Scissors</button>
+    </section>
 
     <div class="results">
         <div id="round">
@@ -25,7 +26,10 @@
             <p id="won">Games Won: <span>0</span></p>
             <p id="lost">Games Lost: <span>0</span></p>
             <p id="tied">Games Tied: <span>0</span></p>
-            <p id="game">This is the game result</p>
+        </div>
+        <div id="end">
+            <p id="endText">Game over!</p>
+            <button class="endButton">Play again?</button>
         </div>
     </div>
 
